@@ -1,4 +1,5 @@
 .App{
+  position: relative;
   width: 100%;
   height: 100vh;
 }
@@ -24,4 +25,19 @@
 
 .parameter-select{
   margin-top: 1rem;
+}
+
+.sidebar {
+  z-index: 1;
+  height: 100%;
+  width: 30%;
+  position: absolute;
+  top: 0;
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.chart {
+  margin-top: 5rem;
+  margin-left: 2rem;
 }
