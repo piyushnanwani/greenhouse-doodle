@@ -1,12 +1,12 @@
 import './App.css';
-import Home from './components/home'
-import Sidebar from './components/sidebar/sidebar'
+import Map from './components/map';
+import Sidebar from './components/sidebar';
 
 function App() {
   return (
     <div className="App">
-      <Home />
       <Sidebar />
+      <Map />
     </div>
   );
 }

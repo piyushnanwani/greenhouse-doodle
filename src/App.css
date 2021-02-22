@@ -1,43 +1,39 @@
-.App{
-  position: relative;
-  width: 100%;
+.App {
   height: 100vh;
+  display: flex;
+  padding: 0 5rem 0 5rem;
 }
 
-.map{
+.sidebar {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.map {
+  width: 100%;
+  margin: 1rem;
+  text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 100%;
-  width: 100%;
+  flex-direction: column;
 }
 
 .dropdowns{
   display: flex;
-  position: absolute;
   flex-direction: column;
   margin: 1rem;
-  width: 15rem;
-  top: 4rem;
-  right: 2rem;
 }
+
+
 
 .parameter-select{
   margin-top: 1rem;
 }
 
-.sidebar {
-  z-index: 1;
-  height: 100%;
-  width: 30%;
-  position: absolute;
-  top: 0;
-  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
+
 
 .chart {
-  margin-top: 5rem;
-  margin-left: 2rem;
+  margin: 1rem;
 }
