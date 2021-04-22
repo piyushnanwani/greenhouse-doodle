@@ -1,9 +1,81 @@
 .App {
-  height: 100vh;
+  /* height: 100vh; */
+
   display: flex;
-  padding: 0 5rem 0 5rem;
+  padding: 10rem 5rem 0 5rem;
+  flex-direction: column;
 }
 
+.countrybox {
+  width: 100%;
+  flex-direction: 'column';
+}
+
+.country-select {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+
+.timeperiod {
+  display: flex;
+  flex-direction: row;
+}
+
+.timeNParameter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.addBtn {
+  font-size: 2rem;
+  margin-right: 2rem;
+  background-color: white;
+  padding-left: 2%;
+  padding-right: 2%;
+  /* flex: 0.1; */
+  width: 3rem;
+  text-align: center;
+  align-items: center;
+  padding: 0/5rem;
+  border: solid;
+  border-color: #b0e7f5;
+}
+
+.dropdown {
+  width: 100rem;
+  border: solid;
+  border-color: #b0e7f5;
+}
+.addBtn:hover {
+  cursor: pointer;
+}
+.addBtn:active {
+  background-color: #b0e7f5;
+}
+.boxtopbar {
+  background-color: #0b6880;
+  color: white;
+  margin-top: 5rem;
+  padding: 1rem;
+  padding-left: 3rem;
+}
+
+.boxchild {
+}
+
+.boxaddchild {
+  border-style: solid;
+  border-color: cyan;
+  /* color: white; */
+  margin-top: 5rem;
+  padding: 1rem;
+  padding-left: 3rem;
+}
+
+.smallbox {
+}
 .sidebar {
   width: 40%;
   display: flex;
@@ -20,20 +92,31 @@
   flex-direction: column;
 }
 
-.dropdowns{
+.dropdowns {
   display: flex;
   flex-direction: column;
   margin: 1rem;
 }
 
-
-
-.parameter-select{
+.parameter-select {
   margin-top: 1rem;
+  width: 20rem;
+  color: #2d93ad;
 }
-
-
+.parameter-select2 {
+  color: #2d93ad;
+}
 
 .chart {
   margin: 1rem;
+}
+
+.myinput {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  font-size: medium;
+  font-weight: 300;
+  width: 5rem;
+  margin-right: 1rem;
+  color: rgb(10, 35, 150);
 }

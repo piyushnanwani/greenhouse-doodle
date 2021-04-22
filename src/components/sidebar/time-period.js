@@ -1,26 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function TimePeriod() {
-  const [start, setStart] = useState(1990);
-  const [end, setEnd] = useState(2014);
+export default function TimePeriod({ start, setStart, end, setEnd }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <p>Select time period</p>
+    <div className="timeperiod">
       <input
+        className="myinput"
         type="text"
         label={'start'}
         value={start}
         onChange={event => setStart(event.target.value)}
       ></input>
       <input
+        className="myinput"
         type="text"
         label={'end'}
         value={end}
         onChange={event => setEnd(event.target.value)}
       ></input>
-      <p>
-        start : {start} <br /> end : {end}
-      </p>
     </div>
   );
 }

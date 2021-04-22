@@ -14,12 +14,17 @@ export default function CountrySelect({
 
   return (
     <div className="country-select">
-      <Dropdown
-        options={options}
-        value={defaultOption}
-        placeholder="Select an option"
-        onChange={value => setCountry(value.value)}
-      />
+      <div className="addBtn" onClick={() => console.log('hey')}>
+        +
+      </div>
+      <div className="dropdown">
+        <Dropdown
+          options={options}
+          value={defaultOption}
+          placeholder="Select an option"
+          onChange={value => setCountry(value.value)}
+        />
+      </div>
     </div>
   );
 }

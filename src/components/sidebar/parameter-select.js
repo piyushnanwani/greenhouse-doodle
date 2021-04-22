@@ -3,7 +3,6 @@ import 'react-dropdown/style.css';
 import Dropdown from 'react-dropdown';
 
 export default function ParameterSelect({ parameter, setParameter }) {
-  console.log(parameter);
   const options = [
     'CO2',
     'GHG_indirect_CO2',
@@ -20,10 +19,13 @@ export default function ParameterSelect({ parameter, setParameter }) {
   return (
     <div className="parameter-select">
       <Dropdown
+        className="parameter-select2"
         options={options}
         value={parameter}
         placeholder="Select an option"
-        onChange={value => setParameter(value)}
+        onChange={value => {
+          setParameter(value.value);
+        }}
       />
     </div>
   );

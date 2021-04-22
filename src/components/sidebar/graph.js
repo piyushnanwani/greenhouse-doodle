@@ -1,27 +1,39 @@
 import React from 'react';
 import { Chart } from 'react-charts';
 
-export default function Graph({ country, parameter, CLEANED_DATA }) {
+export default function Graph({
+  country,
+  parameter,
+  CLEANED_DATA,
+  timePeriod,
+}) {
   let filteredData = CLEANED_DATA.filter(
     dataPoint =>
-      dataPoint.country_or_area === country && dataPoint.category === parameter
+      dataPoint.country_or_area === country &&
+      dataPoint.category === parameter &&
+      dataPoint.year >= timePeriod.start &&
+      dataPoint.year <= timePeriod.end
   );
   console.log('inside graph component');
   console.log(country);
   console.log(filteredData);
   console.log(filteredData.map(dataItem => [dataItem.value, dataItem.year]));
 
-  const data = React.useMemo(
-    () => [
-      {
-        label: country,
-        data: filteredData.map(dataItem => {
-          return { x: dataItem.year, y: dataItem.value };
-        }),
-      },
-    ],
-    []
-  );
+  const data = [
+    {
+      label: country,
+      data: filteredData.map(dataItem => {
+        return { x: dataItem.year, y: dataItem.value + 1000 };
+      }),
+    },
+
+    {
+      label: country,
+      data: filteredData.map(dataItem => {
+        return { x: dataItem.year, y: dataItem.value };
+      }),
+    },
+  ];
 
   const axes = React.useMemo(
     () => [
@@ -35,12 +47,13 @@ export default function Graph({ country, parameter, CLEANED_DATA }) {
   return (
     <div
       style={{
-        width: '800px',
-        height: '600px',
+        width: '100%',
+        height: '500px',
+        padding: 0,
+        margin: 10,
       }}
       className="chart"
     >
-      <p>Example Graph of {country}</p>
       <Chart data={data} axes={axes} tooltip />
     </div>
   );
