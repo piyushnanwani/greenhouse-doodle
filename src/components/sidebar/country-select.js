@@ -1,18 +1,25 @@
-import React from 'react'
+import React from 'react';
 import 'react-dropdown/style.css';
-import Dropdown from 'react-dropdown'
+import Dropdown from 'react-dropdown';
 
-export default function CountrySelect() {
-    //Write logic to render all countries as dropdown options
-    const options = [
-        'Country One', 'Country Two', 'Country Three'
-    ];
-    
-    const defaultOption = options[0];
+// processing done once to load the all the coutries
+export default function CountrySelect({
+  country,
+  setCountry,
+  COUNTRIES_NAMES,
+}) {
+  const options = [...COUNTRIES_NAMES];
 
-    return(
-        <div className="country-select">
-            <Dropdown options={options} value={defaultOption} placeholder="Select an option" />
-        </div>
-    )
+  const defaultOption = country;
+
+  return (
+    <div className="country-select">
+      <Dropdown
+        options={options}
+        value={defaultOption}
+        placeholder="Select an option"
+        onChange={value => setCountry(value.value)}
+      />
+    </div>
+  );
 }
