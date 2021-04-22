@@ -63,6 +63,13 @@
 }
 
 .boxchild {
+  text-align: left;
+  /* padding-right: 2rem;
+  padding-left: 1rem; */
+  font-size: medium;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .boxaddchild {

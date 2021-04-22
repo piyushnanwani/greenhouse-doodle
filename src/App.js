@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar CLEANED_DATA={CLEANED_DATA} COUNTRIES_DATA={COUNTRIES_DATA} />
+      <Sidebar CLEANED_DATA={CLEANED_DATA} COUNTRIES_DATA={COUNTRIES_DATA2} />
       <Map />
     </div>
   );
@@ -86,3 +86,12 @@ function cleaner(data) {
   return data;
   // return [data, listOfCountries];
 }
+
+let COUNTRIES_DATA2 = [
+  'Czech Republic',
+  'Australia',
+  'Cyprus',
+  'Germany',
+  'Greece',
+  'Hungary',
+];
