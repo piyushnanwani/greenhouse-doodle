@@ -1,10 +1,10 @@
 function cleaning_logic(data) {
-  // let setOfCountries = new Set();
 
+  let savedNullIndices = []; // storing all null indices
   for (let i = 0; i < data.length; i++) {
+
     data[i].year = parseInt(data[i].year); //convert year to int
     data[i].value = parseInt(data[i].value); // value to int, since so many decimals insignificant (Since Big Numbers!!)
-    // setOfCountries.add(data[i].country_or_area);
 
     /* Shortening these long repeated values */
     if (
@@ -57,14 +57,22 @@ function cleaning_logic(data) {
       'unspecified_mix_of_hydrofluorocarbons_hfcs_and_perfluorocarbons_pfcs_emissions_in_kilotonne_co2_equivalent'
     )
       data[i].category = 'HFC-PFC-mix';
+
+      if (
+        data[i].category === '' ||
+        parseInt(data[i].year) === null ||
+        parseInt(data.value) === null ||
+        data.country_or_area === ''
+      )
+        savedNullIndices.push(i);
   }
-  // console.log('Data cleaned!');
-  // console.log(data);
-
-  // let listOfCountries = Array.from(setOfCountries);
-
+  /* removing null data */
+  console.log(savedNullIndices.length);
+  for (let i =0; i<savedNullIndices.length; i++)
+  {
+      data = data.splice(savedNullIndices[i], 1);
+  }
   return data;
-  // return [data, listOfCountries];
 }
 
 /* Steps: import JSON */
