@@ -49,14 +49,14 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
     console.log(countryList);
     console.log(typeof countryList);
     // countryList = countryList.map(element => String(element));
-    let countryListStr2 = JSON.stringify(countryList);
-    console.log(countryListStr);
 
-    let countryListArr = countryListStr.split(',');
-    console.log(countryListArr);
-    console.log(countryListArr[0]);
+    if (countryList && countryListStr !== "") {
+      let countryListStr2 = JSON.stringify(countryList);
+      console.log(countryListStr);
 
-    if (countryList) {
+      let countryListArr = countryListStr.split(',');
+      console.log(countryListArr);
+      console.log(countryListArr[0]);
       // setCountry(countryList[0]);
       // setCountryList(countryList);
       setCountry(countryListArr[0]);
