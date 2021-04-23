@@ -22,7 +22,10 @@ export default function CountrySelect({
           className="addBtn"
           onClick={() => {
             // add to list if not present before
-            if (countryList.indexOf(country) === -1)
+            if (
+              countryList.indexOf(country) === -1 &&
+              country !== 'Add Location'
+            )
               setCountryList([...countryList, country]);
           }}
         >

@@ -4,7 +4,6 @@ import Sidebar from './components/sidebar';
 import JSON_DATA from './greenhouse_gas_inventory_data_data.json';
 // cleaning data
 import COUNTRIES_DATA from './countries.json';
-
 function App() {
   const CLEANED_DATA = cleaner(JSON_DATA);
   // const [CLEANED_DATA, COUNTRIES_DATA2] = cleaner(JSON_DATA);

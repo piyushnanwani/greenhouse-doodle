@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 export default function Map() {
   return (
     //The code to render a map goes here.
