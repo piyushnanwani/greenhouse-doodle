@@ -27,6 +27,7 @@ export default function CountrySelect({
               country !== 'Add Location'
             )
               setCountryList([...countryList, country]);
+            /* first get value of previous state if necessary */
           }}
         >
           +

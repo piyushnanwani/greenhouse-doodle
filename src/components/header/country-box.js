@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function CountryBox({ countryList, setCountryList }) {
+  console.log('value of country list in country box');
   console.log(countryList);
   function handleRemove(event) {
     const newList = countryList.filter(item => item !== event.target.id);

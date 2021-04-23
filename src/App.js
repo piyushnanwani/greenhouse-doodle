@@ -7,7 +7,7 @@ import COUNTRIES_DATA from './countries.json';
 function App() {
   const CLEANED_DATA = cleaner(JSON_DATA);
   // const [CLEANED_DATA, COUNTRIES_DATA2] = cleaner(JSON_DATA);
-  console.log(CLEANED_DATA);
+  // console.log(CLEANED_DATA);
   // console.log(COUNTRIES_DATA2);
 
   return (
@@ -77,8 +77,8 @@ function cleaner(data) {
     )
       data[i].category = 'HFC-PFC-mix';
   }
-  console.log('Data cleaned!');
-  console.log(data);
+  // console.log('Data cleaned!');
+  // console.log(data);
 
   // let listOfCountries = Array.from(setOfCountries);
 
