@@ -16,23 +16,23 @@ function asynchFake(data) {
 function func1() {
   myconverter.csv_to_json_converter(
     'utility/data/greenhouse_gas_inventory_data_data.csv',
-    'countries-n-environment.json'
+    'src/greenhouse_gas_inventory_data.json'
   );
   return asynchFake([1, 2, 3]);
 }
 
 function func2(func1Data) {
   cleaner.data_cleaning(
-    'countries-n-environment.json',
-    'countries-n-environment.json'
+    'src/greenhouse_gas_inventory_data.json',
+    'src/greenhouse_gas_inventory_data.json'
   );
   return asynchFake(func1Data.map(v => v * 10));
 }
 
 function func3(func2Data) {
   countries.listOfCountries_JSON(
-    'countries-n-environment.json',
-    'unique-countries.json'
+    'src/greenhouse_gas_inventory_data.json',
+    'src/countries.json'
   );
   return asynchFake(func2Data.map(v => v * 10));
 }
