@@ -3,10 +3,9 @@ import Graph from './graph';
 import CountrySelect from './country-select';
 import ParameterSelect from './parameter-select';
 import TimePeriod from './time-period';
-// import COUNTRIES_DATA from '../../countries.json';
+import ErrorBoundary from '../ErrorBoundary'
 
 export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
-  const [urlQueryParams, setUrlQueryParams] = useState('');
   const [savedDataList, setSavedDataList] = useState([]);
   const [currentdata, setCurrentData] = useState([]);
 
@@ -17,19 +16,8 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
   const [start, setStart] = useState(1990);
   const [end, setEnd] = useState(2014);
   const COUNTRIES_NAMES = COUNTRIES_DATA;
-  // const COUNTRIES_NAMES = COUNTRIES_DATA.map(item => item.name);
-  // console.log(COUNTRIES_NAMES);
-  // window.history.replaceState(null, 'New Page Title', urlQueryParams);
-  // let countryListStr = countryList.map((ele) => {
-  //   return (
-  //     'country:',
-  //   )
-  // })
 
   let countryListStr = String(countryList);
-  // console.log('cry====');
-  // console.log(countryListStr.replace(',', '%2b'));
-  // console.log(countryList);
 
   window.history.replaceState(
     null,
@@ -55,10 +43,6 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
       console.log(countryListStr);
 
       let countryListArr = countryListStr.split(',');
-      console.log(countryListArr);
-      console.log(countryListArr[0]);
-      // setCountry(countryList[0]);
-      // setCountryList(countryList);
       setCountry(countryListArr[0]);
       setCountryList(countryListArr);
     }
@@ -78,6 +62,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
   return (
     <div className="sidebar">
       <div className="dropdowns">
+        <ErrorBoundary>
         <CountrySelect
           countryList={countryList}
           setCountryList={setCountryList}
@@ -85,6 +70,8 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
           country={country}
           setCountry={setCountry}
         />
+        </ErrorBoundary>
+        <ErrorBoundary>
         <div className="timeNParameter">
           <TimePeriod
             start={start}
@@ -93,8 +80,11 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
             setEnd={setEnd}
           />
           <ParameterSelect parameter={parameter} setParameter={setParameter} />
+
         </div>
+        </ErrorBoundary>
       </div>
+        <ErrorBoundary>
       <Graph
         country={country}
         parameter={parameter}
@@ -106,6 +96,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
         savedDataList={savedDataList}
         setSavedDataList={setSavedDataList}
       />
+        </ErrorBoundary>
     </div>
   );
 }
