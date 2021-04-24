@@ -18,16 +18,19 @@ export default function ParameterSelect({ parameter, setParameter, isThisForMap=
   const extraStyleForMap = isThisForMap===true? "parameter-select-map": "";
   const style = 'parameter-select' + ' ' + extraStyleForMap;
   return (
-    <div className={style}>
-      <Dropdown
-        className="parameter-select2"
-        options={options}
-        value={parameter}
-        placeholder="Select an option"
-        onChange={value => {
-          setParameter(value.value);
-        }}
-      />
+      <div className={style}>
+    <div className="tooltip">
+        <Dropdown
+          className="parameter-select2"
+          options={options}
+          value={parameter}
+          placeholder="Select an option"
+          onChange={value => {
+            setParameter(value.value);
+          }}
+        />
+      <span class="tooltiptext">Select a green house gas</span>
+      </div>
     </div>
   );
 }

@@ -15,29 +15,35 @@ export default function CountrySelect({
   const defaultOption = country;
 
   return (
-    <div>
+    <div style={{paddingTop:20}} >
       <div className="country-select">
-        <div
-          className="addBtn"
-          onClick={() => {
-            // add to list if not present before
-            if (
-              countryList.indexOf(country) === -1 &&
-              country !== 'Add Location'
-            )
-              setCountryList([...countryList, country]);
-            /* first get value of previous state if necessary */
-          }}
-        >
-          +
-        </div>
         <div className="dropdown">
-          <Dropdown
-            options={options}
-            value={defaultOption}
-            placeholder="Select an option"
-            onChange={value => setCountry(value.value)}
-          />
+          <div className="tooltip" style={{ width: '100%' }}>
+            <Dropdown
+              options={options}
+              value={defaultOption}
+              placeholder="Select an option"
+              onChange={value => setCountry(value.value)}
+            />
+            <span class="tooltiptext">Select a country</span>
+          </div>
+        </div>
+        <div className="tooltip">
+          <div
+            className="addBtn"
+            onClick={() => {
+              // add to list if not present before
+              if (
+                countryList.indexOf(country) === -1 &&
+                country !== 'Add Location'
+              )
+                setCountryList([...countryList, country]);
+              /* first get value of previous state if necessary */
+            }}
+          >
+            +
+          </div>
+          <span class="tooltiptext">Click to Add</span>
         </div>
       </div>
       <CountryBox countryList={countryList} setCountryList={setCountryList} />

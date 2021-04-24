@@ -28,9 +28,9 @@
 }
 .timeperiod-map {
   position: absolute;
-  right: 10%;
-  top: 30%;
-  left: 90%;
+  right: 15%;
+  top: 27%;
+  /* left: 90%; */
   display: inline;
 }
 
@@ -40,18 +40,26 @@
   justify-content: space-between;
 }
 .addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
-  margin-right: 2rem;
+  margin-left: 2rem;
   background-color: white;
   padding-left: 2%;
   padding-right: 2%;
   /* flex: 0.1; */
   width: 3rem;
+  height: 3rem;
   text-align: center;
   align-items: center;
   padding: 0/5rem;
   border: solid;
   border-color: #b0e7f5;
+}
+
+.addBtn:hover {
+  scale: 1.2;
 }
 
 .dropdown {
@@ -120,8 +128,8 @@
 }
 .parameter-select-map {
   position: absolute;
-  top: 25%;
-  left: 50%;
+  top: 27%;
+  left: 60%;
   /* margin-top: 1rem; */
   width: 20rem;
   color: yellow;
@@ -142,4 +150,35 @@
   width: 5rem;
   margin-right: 1rem;
   color: rgb(10, 35, 150);
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted black; */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.trashIcon:hover {
+  scale: 1.2;
+}
+#tooltip-delete {
+  background-color: red;
+  width: 100px;
 }

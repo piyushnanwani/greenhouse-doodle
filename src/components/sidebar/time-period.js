@@ -44,22 +44,28 @@ export default function TimePeriod({
   const style = 'timeperiod' + ' ' + extraStyleForMap;
   return (
     <div className={style}>
-      <input
-        className="myinput"
-        type="text"
-        label={'start'}
-        value={start}
-        placeholder="year "
-        onChange={event => setStart(event.target.value)}
-      ></input>
-      {isThisForMap === false ? (
+      <div class="tooltip">
         <input
           className="myinput"
           type="text"
-          label={'end'}
-          value={end}
-          onChange={event => setEnd(event.target.value)}
+          label={'start'}
+          value={start}
+          placeholder="year "
+          onChange={event => setStart(event.target.value)}
         ></input>
+        <span class="tooltiptext">Starting Year</span>
+      </div>
+      {isThisForMap === false ? (
+        <div class="tooltip">
+          <input
+            className="myinput"
+            type="text"
+            label={'end'}
+            value={end}
+            onChange={event => setEnd(event.target.value)}
+          ></input>
+          <span class="tooltiptext">Ending Year</span>
+        </div>
       ) : null}
     </div>
   );
