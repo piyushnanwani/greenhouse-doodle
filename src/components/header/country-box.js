@@ -1,8 +1,6 @@
 import React from 'react';
-
+import TrashIcon from '../../delete.svg'
 export default function CountryBox({ countryList, setCountryList }) {
-  console.log('value of country list in country box');
-  console.log(countryList);
   function handleRemove(event) {
     const newList = countryList.filter(item => item !== event.target.id);
 
@@ -13,11 +11,18 @@ export default function CountryBox({ countryList, setCountryList }) {
       <div className="boxtopbar">Location</div>
       {countryList.map(function (country) {
         return (
-          <div className="boxchild">
-            <div id={country} className="addBtn" onClick={handleRemove}>
-              -
+          <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between',padding:10 }}>
+            <div>{country}</div>
+            <div className="a" onClick={(event) => {
+              handleRemove(event);
+              console.log('clicked!')
+              console.log(event.target.id)
+              }}>
+              <img id={country} src={TrashIcon}  alt="logo" height={20}/>
             </div>
-            <div className="dropdown">{country}</div>
+          </div>
+            <hr/>
           </div>
         );
       })}

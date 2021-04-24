@@ -3,7 +3,7 @@ import Graph from './graph';
 import CountrySelect from './country-select';
 import ParameterSelect from './parameter-select';
 import TimePeriod from './time-period';
-import ErrorBoundary from '../ErrorBoundary'
+import ErrorBoundary from '../ErrorBoundary';
 
 export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
   const [savedDataList, setSavedDataList] = useState([]);
@@ -38,7 +38,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
     console.log(typeof countryList);
     // countryList = countryList.map(element => String(element));
 
-    if (countryList && countryListStr !== "") {
+    if (countryList && countryListStr !== '') {
       let countryListStr2 = JSON.stringify(countryList);
       console.log(countryListStr);
 
@@ -63,40 +63,40 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
     <div className="sidebar">
       <div className="dropdowns">
         <ErrorBoundary>
-        <CountrySelect
-          countryList={countryList}
-          setCountryList={setCountryList}
-          COUNTRIES_NAMES={COUNTRIES_NAMES}
-          country={country}
-          setCountry={setCountry}
-        />
-        </ErrorBoundary>
-        <ErrorBoundary>
-        <div className="timeNParameter">
-          <TimePeriod
-            start={start}
-            setStart={setStart}
-            end={end}
-            setEnd={setEnd}
-          />
-          <ParameterSelect parameter={parameter} setParameter={setParameter} />
-
-        </div>
+          <div className="timeNParameter">
+            <TimePeriod
+              start={start}
+              setStart={setStart}
+              end={end}
+              setEnd={setEnd}
+            />
+            <ParameterSelect
+              parameter={parameter}
+              setParameter={setParameter}
+            />
+          </div>
         </ErrorBoundary>
       </div>
-        <ErrorBoundary>
-      <Graph
-        country={country}
-        parameter={parameter}
-        timePeriod={{ start, end }}
-        CLEANED_DATA={CLEANED_DATA}
+      <ErrorBoundary>
+        <Graph
+          country={country}
+          parameter={parameter}
+          timePeriod={{ start, end }}
+          CLEANED_DATA={CLEANED_DATA}
+          countryList={countryList}
+          // currentdata={currentdata}
+          setCurrentData={setCurrentData}
+          savedDataList={savedDataList}
+          setSavedDataList={setSavedDataList}
+        />
+      </ErrorBoundary>
+      <CountrySelect
         countryList={countryList}
-        // currentdata={currentdata}
-        setCurrentData={setCurrentData}
-        savedDataList={savedDataList}
-        setSavedDataList={setSavedDataList}
+        setCountryList={setCountryList}
+        COUNTRIES_NAMES={COUNTRIES_NAMES}
+        country={country}
+        setCountry={setCountry}
       />
-        </ErrorBoundary>
     </div>
   );
 }

@@ -16,7 +16,6 @@ export default function CountrySelect({
 
   return (
     <div>
-      <CountryBox countryList={countryList} setCountryList={setCountryList} />
       <div className="country-select">
         <div
           className="addBtn"
@@ -41,6 +40,7 @@ export default function CountrySelect({
           />
         </div>
       </div>
+      <CountryBox countryList={countryList} setCountryList={setCountryList} />
     </div>
   );
 }

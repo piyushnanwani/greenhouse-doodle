@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-dropdown/style.css';
 import Dropdown from 'react-dropdown';
 
-export default function ParameterSelect({ parameter, setParameter }) {
+export default function ParameterSelect({ parameter, setParameter, isThisForMap=false }) {
   const options = [
     'CO2',
     'GHG_indirect_CO2',
@@ -15,9 +15,10 @@ export default function ParameterSelect({ parameter, setParameter }) {
     'SF6',
     'HFC-PFC-mix',
   ];
-
+  const extraStyleForMap = isThisForMap===true? "parameter-select-map": "";
+  const style = 'parameter-select' + ' ' + extraStyleForMap;
   return (
-    <div className="parameter-select">
+    <div className={style}>
       <Dropdown
         className="parameter-select2"
         options={options}
