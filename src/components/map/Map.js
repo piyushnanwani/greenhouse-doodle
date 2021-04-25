@@ -2,15 +2,19 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import Legend from './components/Legend';
 import Optionsfield from './components/Optionsfield';
+import Tooltip from './components/Tooltip';
 import './Map.css';
 import data from '../../data.json';
 import greenhouse_gas_inventory_data from '../../greenhouse_gas_inventory_data.json';
 import { options } from './index';
+import ReactDOM from 'react-dom';
+import { coordinates } from '../../country_coordinates.js';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
 const Map = ({ year, gas_parameter }) => {
+  const tooltipRef = useRef(new mapboxgl.Popup({ offset: 15 }));
   const [loading, setLoading] = useState(false);
   const [parameter, setParameter] = useState(gas_parameter);
   const [timePeriod, setPeriod] = useState(year);
@@ -41,13 +45,13 @@ const Map = ({ year, gas_parameter }) => {
       setParameter(stored_gas_parameterStr);
     }
   }, []);
-  useEffect(() => {
-    // const json = JSON.stringify(notes);
-    localStorage.setItem('mapYear', timePeriod);
-    localStorage.setItem('mapParameter', parameter);
-    console.log('setting following value in local storage: ');
-    console.log(timePeriod);
-  }, [timePeriod, parameter]);
+  // useEffect(() => {
+  //   // const json = JSON.stringify(notes);
+  //   localStorage.setItem('mapYear', timePeriod);
+  //   localStorage.setItem('mapParameter', parameter);
+  //   console.log('setting following value in local storage: ');
+  //   console.log(timePeriod);
+  // }, [timePeriod, parameter]);
 
   function filter_data(dataaa) {
     let filtered_data = [];
@@ -177,6 +181,28 @@ const Map = ({ year, gas_parameter }) => {
         'country-label'
       );
 
+      for (const datum of resultData.features) {
+        console.log('Hola');
+        console.log(datum.properties);
+        let name = datum.properties.name;
+        let environment_parameter_value =
+          datum.properties.environment_parameter_value;
+        let latlng = coordinates.find(ele => ele.name === name).latlng;
+
+        if (
+          latlng[0] <= 90 &&
+          latlng[0] >= -90 &&
+          latlng[1] <= 90 &&
+          latlng[1] >= -90
+        ) {
+          new mapboxgl.Popup()
+            .setLngLat(latlng)
+            .setHTML(
+              `<div><h1>${name}</h1><h1>${environment_parameter_value}</h1> </div>`
+            )
+            .addTo(map);
+        }
+      }
       map.setPaintProperty('countries', 'fill-color', {
         property: active.property,
         stops: active.stops,
@@ -185,7 +211,44 @@ const Map = ({ year, gas_parameter }) => {
       console.log(active);
       setMap(map);
     });
+    // change cursor to pointer when user hovers over a clickable feature
+    map.on('mouseenter', e => {
+      if (e.features.length) {
+        map.getCanvas().style.cursor = 'pointer';
+      }
+    });
 
+    // reset cursor to default when user is no longer hovering over a clickable feature
+    map.on('mouseleave', () => {
+      map.getCanvas().style.cursor = '';
+    });
+
+    // add tooltip when users mouse move over a point
+    map.on('mousemove', e => {
+      const features = map.queryRenderedFeatures(e.point);
+      // console.log(e.lngLat);
+      // console.log(features);
+
+      if (features.length) {
+        const feature = features[0];
+
+        // Create tooltip node
+        const tooltipNode = document.createElement('div');
+        ReactDOM.render(<Tooltip feature={feature} />, tooltipNode);
+
+        // Set tooltip on map
+        tooltipRef.current
+          .setLngLat(e.lngLat)
+          .setDOMContent(tooltipNode)
+          .addTo(map);
+      }
+    });
+    // let marker = new mapboxgl.Marker().setLngLat([17.05, -61.8]).addTo(map);
+
+    // new mapboxgl.Popup()
+    //   .setLngLat([17.05, -61.8])
+    //   .setHTML('<h1>Null Island</h1>')
+    //   .addTo(map);
     // Clean up on unmount
     return () => map.remove();
   }, [resultData, active]);
@@ -205,17 +268,17 @@ const Map = ({ year, gas_parameter }) => {
     }
   };
   function func1(i) {
-    console.log(`I'm in function 1`)
-    console.log(i)
-    console.log(active)
-    console.log(options[i])
+    console.log(`I'm in function 1`);
+    console.log(i);
+    console.log(active);
+    console.log(options[i]);
     setActive(options[i]);
     return asynchFake(i);
   }
 
   function func2(func1Data) {
-    console.log(`I'm in function 2`)
-    console.log(active)
+    console.log(`I'm in function 2`);
+    console.log(active);
     fetchData();
     // console.log('func1Data in fun2')
     // console.log(func1Data);
@@ -242,9 +305,7 @@ const Map = ({ year, gas_parameter }) => {
     return func1(optionsIndex).then(func2).then(func3);
   }
 
-  
-
-  const changeState = (optionsIndex) => {
+  const changeState = optionsIndex => {
     console.log('hikary dickary dock state called');
     console.log(optionsIndex);
     main(optionsIndex).then(res => console.log(res));
