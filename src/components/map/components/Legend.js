@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Legend = props => {
   const renderLegendKeys = (stop, i) => {
     return (
@@ -15,7 +14,8 @@ const Legend = props => {
 
   return (
     <>
-      <div className="bg-white absolute bottom right mr12 mb24 py12 px12 shadow-darken10 round z1 wmax180">
+      <div style={{position: 'absolute', bottom:'5%', right:'1%'}}  className="bg-white  mr12 mb24 py12 px12 shadow-darken10 round z1 wmax180">
+      {/* <div style={{position: 'absolute', bottom:'10%'}}  className="bg-white absolute bottom right mr12 mb24 py12 px12 shadow-darken10 round z1 wmax180"> */}
         <div className="mb6">
           <h2 className="txt-bold txt-s block">{props.active.name}</h2>
           <p className="txt-s color-gray">{props.active.description}</p>

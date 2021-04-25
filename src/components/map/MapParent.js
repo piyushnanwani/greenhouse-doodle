@@ -4,22 +4,21 @@ import TimePeriod from '../sidebar/time-period';
 import Map from './Map';
 import ErrorBoundary from '../ErrorBoundary';
 
-export default function MapParent() {
-  const [year, setYear] = useState(1990);
-  const [parameter, setParameter] = useState('CH4');
+export default function MapParent({mapYear, setMapYear, mapParameter, setMapParameter}) {
   console.log('state values in Map Parent');
-  console.log(year)
-  console.log(parameter);
+  console.log(mapYear);
+  console.log(mapParameter);
+
   return (
     <div>
-      <TimePeriod start={year} setStart={setYear} isThisForMap={true} />
+      <TimePeriod start={mapYear} setStart={setMapYear} isThisForMap={true} />
       <ParameterSelect
-        parameter={parameter}
-        setParameter={setParameter}
+        parameter={mapParameter}
+        setParameter={setMapParameter}
         isThisForMap={true}
       />
       <ErrorBoundary>
-        <Map year={year} gas_parameter={parameter} />
+        <Map year={mapYear} gas_parameter={mapParameter} />
       </ErrorBoundary>
     </div>
   );

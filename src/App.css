@@ -67,6 +67,16 @@
   border: solid;
   border-color: #b0e7f5;
 }
+.optionsFields-dropdown {
+  position: absolute;
+  top: 17.5rem;
+  left: 89rem;
+  width: 6rem;
+  scale: 0.8;
+  border-radius: 5px;
+  font-size: 16;
+}
+
 .addBtn:hover {
   cursor: pointer;
 }

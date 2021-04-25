@@ -5,7 +5,7 @@ import ParameterSelect from './parameter-select';
 import TimePeriod from './time-period';
 import ErrorBoundary from '../ErrorBoundary';
 
-export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
+export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParameter }) {
   const [savedDataList, setSavedDataList] = useState([]);
   const [currentdata, setCurrentData] = useState([]);
 
@@ -25,7 +25,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
     `chart?start=${start}&end=${end}&parameter=${parameter}&location=${countryListStr.replace(
       ',',
       '%2b'
-    )}`
+    )}&mapYear=${mapYear}&mapParameter=${mapParameter}`
   );
   useEffect(() => {
     let countryListStr = localStorage.getItem('countryList'); // return as string by default
@@ -38,7 +38,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
     // console.log(typeof countryList);
     // countryList = countryList.map(element => String(element));
 
-    if (countryList && countryListStr !== '') {
+    if (countryList && countryListStr && countryListStr !== '' ) {
       let countryListStr2 = JSON.stringify(countryList);
       // console.log(countryListStr);
 
