@@ -13,14 +13,22 @@ export default class ErrorBoundary extends React.Component {
       errorInfo: errorInfo,
     });
     // You can also log error messages to an error reporting service here
+    window.history.replaceState(
+    null,
+    'New Page Title',
+    ``
+  );
+  // setTimeout(() => {
+  //   window.location.reload(false);
+  // }, 3000);
   }
-
   render() {
     if (this.state.errorInfo) {
       // Error path
       return (
         <div>
           <h2>Something went wrong.</h2>
+          <h2>Reloading this Page in 3 seconds to fix this issue...</h2>
           <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error && this.state.error.toString()}
             <br />

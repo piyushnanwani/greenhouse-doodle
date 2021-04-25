@@ -67,7 +67,7 @@ function cleaning_logic(data) {
         savedNullIndices.push(i);
   }
   /* removing null data */
-  console.log(savedNullIndices.length);
+  // console.log(savedNullIndices.length);
   for (let i =0; i<savedNullIndices.length; i++)
   {
       data = data.splice(savedNullIndices[i], 1);

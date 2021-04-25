@@ -33,14 +33,14 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
     let endStr = localStorage.getItem('end'); // returns string by default
     let parameterStr = localStorage.getItem('parameter'); // returns string by default
     // const savedNotes = JSON.parse(json);
-    console.log('getting following value from local storage: ');
-    console.log(countryList);
-    console.log(typeof countryList);
+    // console.log('getting following value from local storage: ');
+    // console.log(countryList);
+    // console.log(typeof countryList);
     // countryList = countryList.map(element => String(element));
 
     if (countryList && countryListStr !== '') {
       let countryListStr2 = JSON.stringify(countryList);
-      console.log(countryListStr);
+      // console.log(countryListStr);
 
       let countryListArr = countryListStr.split(',');
       setCountry(countryListArr[0]);
@@ -56,8 +56,8 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA }) {
     localStorage.setItem('start', start); //time Period
     localStorage.setItem('end', end); // time period
     localStorage.setItem('parameter', parameter);
-    console.log('setting following value in local storage: ');
-    console.log(countryList);
+    // console.log('setting following value in local storage: ');
+    // console.log(countryList);
   }, [countryList, start, end, parameter]);
   return (
     <div className="sidebar">

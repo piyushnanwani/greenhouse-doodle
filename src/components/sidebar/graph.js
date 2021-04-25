@@ -26,9 +26,6 @@ export default function Graph({
   }
 
   function format_data_for_line_chart(filteredDataArr, countryList) {
-    // console.log('bye');
-    // console.log(filteredDataArr);
-    // console.log(countryList);
     let new_arr = [];
     for (let i = 0; i < countryList.length; i++) {
       // new_arr.push({ label: countryList[i], data:  () => { x:filteredDataArr[i].year, y: filteredDataArr[i].value} })
