@@ -5,7 +5,7 @@ import ParameterSelect from './parameter-select';
 import TimePeriod from './time-period';
 import {ErrorBoundary} from '../common';
 
-export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParameter }) {
+export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParameter, setMapParameter, setMapYear }) {
   const [savedDataList, setSavedDataList] = useState([]);
   const [currentdata, setCurrentData] = useState([]);
 
@@ -32,6 +32,8 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
     let startStr = localStorage.getItem('start'); // returns string by default
     let endStr = localStorage.getItem('end'); // returns string by default
     let parameterStr = localStorage.getItem('parameter'); // returns string by default
+    let mapYearStr = localStorage.getItem('mapYear'); // returns string by default
+    let mapParameterStr = localStorage.getItem('mapParameter'); // returns string by default
     // const savedNotes = JSON.parse(json);
     // console.log('getting following value from local storage: ');
     // console.log(countryList);
@@ -49,6 +51,8 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
     if (startStr) setStart(startStr);
     if (endStr) setEnd(endStr);
     if (parameterStr) setParameter(parameterStr);
+    if (mapYearStr) setMapYear(mapYearStr);
+    if (mapParameterStr) setMapParameter(mapParameterStr);
   }, []);
   useEffect(() => {
     // const json = JSON.stringify(notes);
@@ -56,9 +60,11 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
     localStorage.setItem('start', start); //time Period
     localStorage.setItem('end', end); // time period
     localStorage.setItem('parameter', parameter);
+    localStorage.setItem('mapYear', mapYear);
+    localStorage.setItem('mapParameter', mapParameter);
     // console.log('setting following value in local storage: ');
     // console.log(countryList);
-  }, [countryList, start, end, parameter]);
+  }, [countryList, start, end, parameter, mapYear, mapParameter]);
   return (
     <div className="sidebar">
       <div className="dropdowns">
@@ -77,6 +83,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
           </div>
         </ErrorBoundary>
       </div>
+      <div style={{border: 'solid'}} >
       <ErrorBoundary>
         <Graph
           country={country}
@@ -90,6 +97,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
           setSavedDataList={setSavedDataList}
         />
       </ErrorBoundary>
+    </div>
       <CountrySelect
         countryList={countryList}
         setCountryList={setCountryList}

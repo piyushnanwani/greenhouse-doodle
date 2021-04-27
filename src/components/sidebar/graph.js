@@ -55,12 +55,6 @@ export default function Graph({
   );
   return (
     <div
-      style={{
-        width: '100%',
-        height: '500px',
-        padding: 0,
-        margin: 10,
-      }}
       className="chart"
     >
       <Chart data={data} axes={axes} tooltip />

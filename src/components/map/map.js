@@ -4,18 +4,18 @@ import { SelectYear, ParameterSelect } from '../common';
 import { fetchMapData } from '../../api/get-map-data';
 import { generateColorsArr } from '../../utils/get-coloring-data';
 
-export default function Map() {
-  const [minX, setMinX] = useState(600); // mouse drag, changes these OR Zoom in & Zoom out buttons
+export default function Map({mapYear, setMapYear, mapParameter, setMapParameter}) {
+  const [minX, setMinX] = useState(0); // mouse drag, changes these OR Zoom in & Zoom out buttons
   const [minY, setMinY] = useState(0);
-  const [viewBoxWidth, setViewBoxWidth] = useState(1000);
-  const [viewBoxHeight, setViewBoxHeight] = useState(1000);
-
-  const [mapYear, setMapYear] = useState(1990); // defining map state variables here, as we need to pass these to Sidebar, so that URL is in sync with state
-  const [mapParameter, setMapParameter] = useState('HFC');
+  const [viewBoxWidth, setViewBoxWidth] = useState(1500);
+  const [viewBoxHeight, setViewBoxHeight] = useState(800);
 
   const data = fetchMapData(mapParameter, mapYear);
   const colorsArr = generateColorsArr(data);
 
+  console.log(mapYear)
+  console.log(mapParameter)
+  console.log(data)
   const [position, setPosition] = React.useState({
     x: 100,
     y: 100,
@@ -58,7 +58,7 @@ export default function Map() {
   };
 
   return (
-    <div>
+    <div className="map-container">
       <div
         style={{
           display: 'flex',
@@ -86,33 +86,35 @@ export default function Map() {
 
         <SelectYear year={mapYear} setYear={setMapYear} />
       </div>
-      <Suspense fallback={<h1>Loading map.. . </h1>}>
-        <svg
-          viewBox="1000 0 1000 1000"
-          width="2000"
-          height="857"
-          viewport-fill="rgb(255,150,200)"
-          viewport-stroke="rgb(255,150,200)"
-        >
-          <WorldMap
-            x={position.x}
-            y={position.y}
-            onPointerDown={handlePointerDown}
-            onPointerUp={handlePointerUp}
-            onPointerMove={handlePointerMove}
-            fill={position.active ? 'blue' : 'black'}
-            width="2000"
-            height="857"
-            // viewBox="600 0 1000 1000"
-            gas_parameter={mapParameter}
-            year={mapYear}
-            // width={2000}
-            // height={857}
-            viewBox={`${minX} ${minY} ${viewBoxWidth} ${viewBoxHeight}`}
-            colors={colorsArr}
-          />
-        </svg>
-      </Suspense>
+      <div style={{ border: 'solid', maxWidth: '720px', padding:'10px' }}>
+        <Suspense fallback={<h1>Loading map.. . </h1>}>
+          <svg
+            viewBox="1000 0 1000 1000"
+            width="700"
+            height="600"
+            viewport-fill="rgb(255,150,200)"
+            viewport-stroke="rgb(255,150,200)"
+          >
+            <WorldMap
+              x={position.x}
+              y={position.y}
+              onPointerDown={handlePointerDown}
+              onPointerUp={handlePointerUp}
+              onPointerMove={handlePointerMove}
+              fill={position.active ? '#A0A0A0' : '#C8C8C8'}
+              width="2000"
+              height="857"
+              // viewBox="600 0 1000 1000"
+              gas_parameter={mapParameter}
+              year={mapYear}
+              // width={2000}
+              // height={857}
+              viewBox={`${minX} ${minY} ${viewBoxWidth} ${viewBoxHeight}`}
+              colors={colorsArr}
+            />
+          </svg>
+        </Suspense>
+      </div>
     </div>
   );
 }

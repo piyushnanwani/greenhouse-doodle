@@ -1,10 +1,10 @@
 .yearDropDwn {
   width: 100px;
 }
-.App {
+.mainAppChildren {
   /* height: 100vh; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   /* padding: 10rem 5rem 0 5rem; */
   /* flex-direction: column; */
@@ -106,22 +106,29 @@
 .smallbox {
 }
 .sidebar {
+  flex: 1;
+  /* border: solid; */
+  padding: 20px;
   /* position: absolute;
   top: 15%;
   bottom: 5%;
   left: 3%;
   right: 50%; */
   /* flex: 0.5; */
-  /* width: 35%; */
+  width: 35%;
   /* display: flex;
   flex-direction: column;
   justify-content: space-evenly; */
 }
 
-.map {
-  flex: 0.5;
+.map-container {
+  flex: 1;
+  margin-left: 40px;
+  padding: 20px;
+  /* border: solid; */
+  /* width: 35%; */
   /* width: 50%; */
-  margin: 1rem;
+  /* margin: 1rem; */
   /* text-align: center; */
   /* display: flex; */
   /* justify-content: center;
@@ -153,6 +160,11 @@
 
 .chart {
   margin: 1rem;
+  /* width: 100%; */
+  height: 500px;
+  /* width: 500px; */
+  padding: 0;
+  /* margin: 10; */
 }
 
 .myinput {

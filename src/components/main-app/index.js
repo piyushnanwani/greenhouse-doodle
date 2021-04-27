@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../sidebar';
 import Map from '../map/map';
 import GREENHOUSE_DATA from '../../data/greenhouse_gas_inventory_data.json';
@@ -11,14 +11,27 @@ export default function MainApp({ setTheme, theme }) {
   const COUNTRIES_DATA_ARR = COUNTRIES_DATA.map(value => value.name);
 
   return (
-    <>
-      <Sidebar
-        CLEANED_DATA={GREENHOUSE_DATA}
-        COUNTRIES_DATA={COUNTRIES_DATA_ARR}
-        mapYear={mapYear}
-        mapParameter={mapParameter}
-      />
-      <Map />
-    </>
+    <div style={{display: 'flex', flexDirection :'column'}} >
+      <h1 style={{ textAlign: 'center', paddingTop: 10, fontSize:20, padding:20 }}>
+        <a style={{ color: 'cyan' }}>Air Quality App:</a> Green House Emissions
+        Timeline
+      </h1>
+      <div className="mainAppChildren">
+        <Sidebar
+          CLEANED_DATA={GREENHOUSE_DATA}
+          COUNTRIES_DATA={COUNTRIES_DATA_ARR}
+          mapYear={mapYear}
+          mapParameter={mapParameter}
+          setMapYear={setMapYear}
+          setMapParameter={setMapParameter}
+        />
+        <Map
+          mapYear={mapYear}
+          mapParameter={mapParameter}
+          setMapYear={setMapYear}
+          setMapParameter={setMapParameter}
+        />
+      </div>
+    </div>
   );
 }
