@@ -1,17 +1,20 @@
-.yearDropDwn {
-  /* width: 100px; */
+.mainApp {
+  display: flex;
+  flex-direction: column;
 }
 .mainAppChildren {
-  /* height: 100vh; */
   display: flex;
   flex-direction: row;
-
-  /* padding: 10rem 5rem 0 5rem; */
-  /* flex-direction: column; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
 }
-
+.mainAppH1 {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 20px;
+  padding: 20px;
+}
+.mainAppA {
+  color: cyan;
+}
 .countrybox {
   width: 100%;
   flex-direction: 'column';
@@ -30,11 +33,6 @@
   flex-direction: row;
 }
 .timeperiod-map {
-  /* position: absolute;
-  right: 15%;
-  top: 27%; */
-  /* left: 90%; */
-  /* display: inline; */
 }
 
 .timeNParameter {
@@ -237,4 +235,45 @@
   color: white;
   transition: background-color 200ms ease-in 50ms;
   transition: color 100ms ease-in 10ms;
+}
+
+.graph-container {
+  border: solid;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.country-select-container {
+  padding-top: 20px;
+}
+
+.legend-container {
+  position: absolute;
+  bottom: 14%;
+  border: solid;
+  border-color: cyan;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: +12;
+}
+.legend-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.mapParameterNYearDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 30px;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.nav-box-legend-map-div {
+  border: solid;
+  max-width: 720px;
+  padding: 10px;
 }

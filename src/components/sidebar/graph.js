@@ -28,7 +28,6 @@ export default function Graph({
   function format_data_for_line_chart(filteredDataArr, countryList) {
     let new_arr = [];
     for (let i = 0; i < countryList.length; i++) {
-      // new_arr.push({ label: countryList[i], data:  () => { x:filteredDataArr[i].year, y: filteredDataArr[i].value} })
       new_arr.push({
         label: countryList[i],
         data: filteredDataArr[i].map(ele => {
@@ -43,8 +42,6 @@ export default function Graph({
   }
 
   const data = format_data_for_line_chart(filteredDataArr, countryList);
-  // console.log('Hi');
-  // console.log(data);
 
   const axes = React.useMemo(
     () => [

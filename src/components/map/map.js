@@ -1,11 +1,9 @@
 import React, { useState, Suspense } from 'react';
-import { default as WorldMap } from './world-map.js';
 import { SelectYear, ParameterSelect } from '../common';
 import { fetchMapData } from '../../api/get-map-data';
 import { generateColorsArr } from '../../utils/get-coloring-data';
-import Legend from './legend';
 import { MAP_COLORS } from '../../config';
-import NavigationBox from './navigation-box';
+import { NavigationBox, Legend, WorldMap } from './index';
 
 export default function Map({
   mapYear,
@@ -67,29 +65,16 @@ export default function Map({
 
   return (
     <div className="map-container">
-      
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          paddingLeft: 30,
-          marginTop:'1.5rem',
-          marginBottom:'0.5rem',
-          // marginLeft: 10,
-          // border: 'solid'
-        }}
-      >
+      <div className="mapParameterNYearDiv">
         <ParameterSelect
           parameter={mapParameter}
           setParameter={setMapParameter}
           isThisForMap={true}
         />
         <SelectYear year={mapYear} setYear={setMapYear} />
-
       </div>
-      <div style={{ border: 'solid', maxWidth: '720px', padding: '10px' }}>
-        <Suspense fallback={<h1>Loading map.. . </h1>}>
+      <Suspense fallback={<h1>Loading map.. . </h1>}>
+        <div className="nav-box-legend-map-div">
           <NavigationBox
             viewBoxHeight={viewBoxHeight}
             setViewBoxHeight={setViewBoxHeight}
@@ -115,8 +100,8 @@ export default function Map({
               colors={colorsArr}
             />
           </svg>
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </div>
   );
 }
