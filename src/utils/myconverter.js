@@ -5,7 +5,7 @@ function csv_to_json_converter(inputFile, outputFile) {
   importCsvFile
     .importCsvFile(inputFile)
     .then(dataArray => {
-      // fisrst converting that data into object
+      // first converting that data into object
       let result = [];
       let headers = dataArray[0].split(',');
 

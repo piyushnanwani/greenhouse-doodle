@@ -16,7 +16,6 @@ function getUniqueLocations(data) {
   }
 
   let listOfCountries = Array.from(setOfCountries);
-  // console.log(listOfCountries);
   return listOfCountries;
 }
 
@@ -27,7 +26,6 @@ function listOfCountries_JSON(inputFilePath, outputFilePath) {
     json = result.map(ele => {
       return { name: ele };
     });
-    // let json = JSON.stringify(Object.assign({}, result));
     exportJsonFile(outputFilePath, json);
   });
 }

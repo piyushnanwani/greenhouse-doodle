@@ -3,7 +3,7 @@ import Graph from './graph';
 import CountrySelect from './country-select';
 import ParameterSelect from './parameter-select';
 import TimePeriod from './time-period';
-import ErrorBoundary from '../ErrorBoundary';
+import {ErrorBoundary} from '../common';
 
 export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParameter }) {
   const [savedDataList, setSavedDataList] = useState([]);

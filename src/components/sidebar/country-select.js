@@ -1,7 +1,7 @@
 import React from 'react';
 import 'react-dropdown/style.css';
 import Dropdown from 'react-dropdown';
-import CountryBox from '../header/country-box';
+import CountryBox from './country-box';
 // processing done once to load the all the coutries
 export default function CountrySelect({
   country,
