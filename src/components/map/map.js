@@ -3,8 +3,16 @@ import { default as WorldMap } from './world-map.js';
 import { SelectYear, ParameterSelect } from '../common';
 import { fetchMapData } from '../../api/get-map-data';
 import { generateColorsArr } from '../../utils/get-coloring-data';
+import Legend from './legend';
+import { MAP_COLORS } from '../../config';
+import NavigationBox from './navigation-box';
 
-export default function Map({mapYear, setMapYear, mapParameter, setMapParameter}) {
+export default function Map({
+  mapYear,
+  setMapYear,
+  mapParameter,
+  setMapParameter,
+}) {
   const [minX, setMinX] = useState(0); // mouse drag, changes these OR Zoom in & Zoom out buttons
   const [minY, setMinY] = useState(0);
   const [viewBoxWidth, setViewBoxWidth] = useState(1500);
@@ -13,9 +21,9 @@ export default function Map({mapYear, setMapYear, mapParameter, setMapParameter}
   const data = fetchMapData(mapParameter, mapYear);
   const colorsArr = generateColorsArr(data);
 
-  console.log(mapYear)
-  console.log(mapParameter)
-  console.log(data)
+  console.log(mapYear);
+  console.log(mapParameter);
+  console.log(data);
   const [position, setPosition] = React.useState({
     x: 100,
     y: 100,
@@ -59,42 +67,39 @@ export default function Map({mapYear, setMapYear, mapParameter, setMapParameter}
 
   return (
     <div className="map-container">
+      
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-evenly',
-          padding: 10,
-          margin: 10,
+          flexDirection: 'row',
+          justifyContent: 'flex-start',
+          paddingLeft: 30,
+          marginTop:'1.5rem',
+          marginBottom:'0.5rem',
+          // marginLeft: 10,
+          // border: 'solid'
         }}
       >
-        <button onClick={() => setViewBoxHeight(viewBoxHeight - 50)}>
-          Zoom In
-        </button>
-        <button onClick={() => setViewBoxHeight(viewBoxHeight + 50)}>
-          Zoom Out
-        </button>
-        <button onClick={() => setMinY(minY - 50)}>Up</button>
-        <button onClick={() => setMinY(minY + 50)}>Down</button>
-        <button onClick={() => setMinX(minX - 50)}>Left</button>
-        <button onClick={() => setMinX(minX + 50)}>Right</button>
-
         <ParameterSelect
           parameter={mapParameter}
           setParameter={setMapParameter}
           isThisForMap={true}
         />
-
         <SelectYear year={mapYear} setYear={setMapYear} />
+
       </div>
-      <div style={{ border: 'solid', maxWidth: '720px', padding:'10px' }}>
+      <div style={{ border: 'solid', maxWidth: '720px', padding: '10px' }}>
         <Suspense fallback={<h1>Loading map.. . </h1>}>
-          <svg
-            viewBox="1000 0 1000 1000"
-            width="700"
-            height="600"
-            viewport-fill="rgb(255,150,200)"
-            viewport-stroke="rgb(255,150,200)"
-          >
+          <NavigationBox
+            viewBoxHeight={viewBoxHeight}
+            setViewBoxHeight={setViewBoxHeight}
+          />
+          <Legend
+            mapYear={mapYear}
+            mapParameter={mapParameter}
+            colors={MAP_COLORS}
+          />
+          <svg viewBox="1000 0 1000 1000" width="700" height="600">
             <WorldMap
               x={position.x}
               y={position.y}
@@ -104,11 +109,8 @@ export default function Map({mapYear, setMapYear, mapParameter, setMapParameter}
               fill={position.active ? '#A0A0A0' : '#C8C8C8'}
               width="2000"
               height="857"
-              // viewBox="600 0 1000 1000"
               gas_parameter={mapParameter}
               year={mapYear}
-              // width={2000}
-              // height={857}
               viewBox={`${minX} ${minY} ${viewBoxWidth} ${viewBoxHeight}`}
               colors={colorsArr}
             />

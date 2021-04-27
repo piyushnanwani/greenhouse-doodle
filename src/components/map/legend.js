@@ -1,26 +1,42 @@
 import React from 'react';
 const Legend = props => {
-  const renderLegendKeys = (stop, i) => {
+  const range = [1000,3000,5000, 10000, 25000, 50000, 100000,200000];
+  const renderLegendKeys = (colors, i) => {
     return (
-      <div key={i} className="txt-s">
+      <div key={i} >
         <span
-          className="mr6 round-full w12 h12 inline-block align-middle"
-          style={{ backgroundColor: stop[1] }}
-        />
-        <span>{`${stop[0].toLocaleString()}`}</span>
+          style={{ backgroundColor: colors }}
+        >
+        <span style={{width:1}} >{`____ `}
+        </span>
+        </span>
+        <span style={{ marginLeft:5 }} >{range[i]} </span>
       </div>
     );
   };
 
   return (
     <>
-      <div style={{position: 'absolute', bottom:'5%', right:'1%'}}  className="bg-white  mr12 mb24 py12 px12 shadow-darken10 round z1 wmax180">
-      {/* <div style={{position: 'absolute', bottom:'10%'}}  className="bg-white absolute bottom right mr12 mb24 py12 px12 shadow-darken10 round z1 wmax180"> */}
-        <div className="mb6">
-          <h2 className="txt-bold txt-s block">{props.active.name}</h2>
-          <p className="txt-s color-gray">{props.active.description}</p>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '14%',
+          // right: '2%',
+          // backgroundColor: 'pink',
+          border: 'solid',
+          borderColor: 'cyan',
+          padding: 10,
+          paddingLeft: 20,
+          paddingRight: 20,
+          zIndex: +12
+        }}
+      >
+        <div style={{ textAlign: 'center', fontWeight: 'bold' }}>
+          <p >{props.mapParameter}</p>
+          <p style={{fontSize:12}} >( In Kilo Tons )</p>
+          <p>{props.mapYear}</p>
         </div>
-        {props.stops.map(renderLegendKeys)}
+        {props.colors.map(renderLegendKeys)}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 .yearDropDwn {
-  width: 100px;
+  /* width: 100px; */
 }
 .mainAppChildren {
   /* height: 100vh; */
@@ -40,7 +40,8 @@
 .timeNParameter {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: center;
 }
 .addBtn {
   display: flex;
@@ -52,23 +53,24 @@
   padding-left: 2%;
   padding-right: 2%;
   /* flex: 0.1; */
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   text-align: center;
   align-items: center;
-  padding: 0/5rem;
   border: solid;
   border-color: #b0e7f5;
 }
 
 .addBtn:hover {
   scale: 1.2;
+  background-color: black;
+  color: #b0e7f5;
 }
 
 .dropdown {
   width: 100rem;
-  border: solid;
-  border-color: #b0e7f5;
+  /* border: solid; */
+  /* border-color: #b0e7f5; */
 }
 .optionsFields-dropdown {
   /* position: absolute;
@@ -107,32 +109,15 @@
 }
 .sidebar {
   flex: 1;
-  /* border: solid; */
   padding: 20px;
-  /* position: absolute;
-  top: 15%;
-  bottom: 5%;
-  left: 3%;
-  right: 50%; */
-  /* flex: 0.5; */
   width: 35%;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-evenly; */
 }
 
 .map-container {
   flex: 1;
   margin-left: 40px;
   padding: 20px;
-  /* border: solid; */
-  /* width: 35%; */
-  /* width: 50%; */
-  /* margin: 1rem; */
-  /* text-align: center; */
-  /* display: flex; */
-  /* justify-content: center;
-  flex-direction: column; */
+  padding-top: 30px;
 }
 
 .dropdowns {
@@ -142,15 +127,11 @@
 }
 
 .parameter-select {
-  margin-top: 1rem;
-  width: 20rem;
+  margin-top: 20px;
   color: #2d93ad;
 }
 .parameter-select-map {
-  /* position: absolute;
-  top: 27%;
-  left: 60%; */
-  /* margin-top: 1rem; */
+  margin-top: 0px;
   width: 20rem;
   color: yellow;
 }
@@ -160,11 +141,8 @@
 
 .chart {
   margin: 1rem;
-  /* width: 100%; */
   height: 500px;
-  /* width: 500px; */
   padding: 0;
-  /* margin: 10; */
 }
 
 .myinput {
@@ -206,4 +184,50 @@
 #tooltip-delete {
   background-color: red;
   width: 100px;
+}
+
+.navigationBox {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  position: absolute;
+  width: 30px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.navigationBoxBtns:hover {
+  font-size: 30px;
+  cursor: pointer;
+}
+#navigationBoxBtnsRotate {
+  transform: rotate(90deg);
+}
+#navigationBoxBtnsRotateDown {
+  transform: rotate(-90deg);
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.yearMapDropDownContainer {
+  /* width: 100%; */
+  /* height: 100%; */
+
+  /* padding: 10px; */
+}
+.yearDropDown {
+  /* width: 100%; */
+  /* padding: 10px; */
+  /* font-size: medium; */
 }

@@ -28,7 +28,7 @@ export default function CountrySelect({
             <span class="tooltiptext">Select a country</span>
           </div>
         </div>
-        <div className="tooltip">
+        <div className="tooltips">
           <div
             className="addBtn"
             onClick={() => {
@@ -43,7 +43,7 @@ export default function CountrySelect({
           >
             +
           </div>
-          <span class="tooltiptext">Click to Add</span>
+          {/* <span class="tooltiptext">Click to Add</span> */}
         </div>
       </div>
       <CountryBox countryList={countryList} setCountryList={setCountryList} />
