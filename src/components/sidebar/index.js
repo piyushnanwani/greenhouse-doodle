@@ -93,7 +93,8 @@ export default function Sidebar({
           </div>
         </ErrorBoundary>
       </div>
-      <div style={{ border: 'solid' }}>
+
+      <div style={{ border: 'solid'}}>
         <ErrorBoundary>
           <Graph
             country={country}

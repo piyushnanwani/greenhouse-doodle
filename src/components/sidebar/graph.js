@@ -53,11 +53,30 @@ export default function Graph({
     ],
     []
   );
+
+  const getSeriesStyle = React.useCallback(
+    () => ({
+      transition: 'all .5s ease',
+    }),
+    []
+  );
+
+  const getDatumStyle = React.useCallback(
+    () => ({
+      transition: 'all .5s ease',
+    }),
+    []
+  );
+
   return (
-    <div
-      className="chart"
-    >
-      <Chart data={data} axes={axes} tooltip />
+    <div className="chart">
+      <Chart
+        data={data}
+        axes={axes}
+        tooltip
+        getSeriesStyle={getSeriesStyle}
+        getDatumStyle={getDatumStyle}
+      />
     </div>
   );
 }
