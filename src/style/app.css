@@ -40,7 +40,8 @@
 .timeNParameter {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-evenly;
+  /* justify-content: flex-end; */
   align-items: center;
 }
 .addBtn {
@@ -127,7 +128,6 @@
 }
 
 .parameter-select {
-  margin-top: 20px;
   color: #2d93ad;
 }
 .parameter-select-map {
@@ -230,4 +230,11 @@
   /* width: 100%; */
   /* padding: 10px; */
   /* font-size: medium; */
+}
+
+.countryBoxList:hover {
+  background-color: rgb(34, 48, 241);
+  color: white;
+  transition: background-color 200ms ease-in 50ms;
+  transition: color 100ms ease-in 10ms;
 }

@@ -13,7 +13,7 @@ export default function CountryBox({ countryList, setCountryList }) {
       )}
       {countryList.map(function (country) {
         return (
-          <div>
+          <div className="countryBoxList" >
             <div
               style={{
                 display: 'flex',

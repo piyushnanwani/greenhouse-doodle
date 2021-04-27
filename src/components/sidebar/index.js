@@ -2,10 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Graph from './graph';
 import CountrySelect from './country-select';
 import ParameterSelect from './parameter-select';
+import { SelectYear } from '../common';
 import TimePeriod from './time-period';
-import {ErrorBoundary} from '../common';
+import { ErrorBoundary } from '../common';
 
-export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParameter, setMapParameter, setMapYear }) {
+export default function Sidebar({
+  CLEANED_DATA,
+  COUNTRIES_DATA,
+  mapYear,
+  mapParameter,
+  setMapParameter,
+  setMapYear,
+}) {
   const [savedDataList, setSavedDataList] = useState([]);
   const [currentdata, setCurrentData] = useState([]);
 
@@ -40,7 +48,7 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
     // console.log(typeof countryList);
     // countryList = countryList.map(element => String(element));
 
-    if (countryList && countryListStr && countryListStr !== '' ) {
+    if (countryList && countryListStr && countryListStr !== '') {
       let countryListStr2 = JSON.stringify(countryList);
       // console.log(countryListStr);
 
@@ -65,17 +73,19 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
     // console.log('setting following value in local storage: ');
     // console.log(countryList);
   }, [countryList, start, end, parameter, mapYear, mapParameter]);
+
+  if (start > end) {
+    alert('Starting year cannot be greater than Ending year!');
+    setStart(1990);
+    setEnd(2014);
+  }
   return (
     <div className="sidebar">
       <div className="dropdowns">
         <ErrorBoundary>
           <div className="timeNParameter">
-            <TimePeriod
-              start={start}
-              setStart={setStart}
-              end={end}
-              setEnd={setEnd}
-            />
+            <SelectYear year={start} setYear={setStart} str="start" />
+            <SelectYear year={end} setYear={setEnd} str="end" />
             <ParameterSelect
               parameter={parameter}
               setParameter={setParameter}
@@ -83,21 +93,21 @@ export default function Sidebar({ CLEANED_DATA, COUNTRIES_DATA,mapYear, mapParam
           </div>
         </ErrorBoundary>
       </div>
-      <div style={{border: 'solid'}} >
-      <ErrorBoundary>
-        <Graph
-          country={country}
-          parameter={parameter}
-          timePeriod={{ start, end }}
-          CLEANED_DATA={CLEANED_DATA}
-          countryList={countryList}
-          // currentdata={currentdata}
-          setCurrentData={setCurrentData}
-          savedDataList={savedDataList}
-          setSavedDataList={setSavedDataList}
-        />
-      </ErrorBoundary>
-    </div>
+      <div style={{ border: 'solid' }}>
+        <ErrorBoundary>
+          <Graph
+            country={country}
+            parameter={parameter}
+            timePeriod={{ start, end }}
+            CLEANED_DATA={CLEANED_DATA}
+            countryList={countryList}
+            // currentdata={currentdata}
+            setCurrentData={setCurrentData}
+            savedDataList={savedDataList}
+            setSavedDataList={setSavedDataList}
+          />
+        </ErrorBoundary>
+      </div>
       <CountrySelect
         countryList={countryList}
         setCountryList={setCountryList}

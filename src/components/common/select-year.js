@@ -8,7 +8,7 @@ arr.fill(1990);
 arr = arr.map((a, b) => a + b);
 
 
-const SelectYear = ({year, setYear}) => {
+const SelectYear = ({year, setYear, str=null}) => {
   return (
     <div className="yearMapDropDownContainer">
       <div className="tooltip">
@@ -19,7 +19,9 @@ const SelectYear = ({year, setYear}) => {
           onChange={e => setYear(parseInt(e.value))}
           value={year.toString()}
         />
-        <span class="tooltiptext">Select a year</span>
+        <span class="tooltiptext">
+          {str === 'start' ? 'Select starting year' : (str === 'end'? 'Select ending year':  'Select a year')}
+        </span>
       </div>
     </div>
   );
