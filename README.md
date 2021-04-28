@@ -31,4 +31,4 @@ clone repo and install using -
 
 ## Documentation
 
-Developer documenation can be found in the [project wiki]().
+Developer documenation can be found in the [project wiki](https://github.com/piyushnanwani/greenhouse-doodle/wiki).
