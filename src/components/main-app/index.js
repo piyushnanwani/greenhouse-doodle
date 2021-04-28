@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../sidebar';
-import Map from '../map/map';
+import Map from '../map';
 import GREENHOUSE_DATA from '../../data/greenhouse_gas_inventory_data.json';
 import COUNTRIES_DATA from '../../data/countries.json';
 import ErrorBoundary from '../common';

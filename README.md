@@ -1,17 +1,31 @@
-# Running this code
+# Greenhouse doodle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Visual analytics of greenhouse emissions.
 
-## Available Scripts
+[[Screenshot GIFhere.png]]
 
-In the project directory, you can run:
+## Why I made greenhouse doodle ?
 
-### `npm i `
-### `node utility/init.js `
-### `npm start `
+This project was created as part of the interview process at [Blue Sky Analytics](https://github.com/blueskyanalytics)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Greenhouse gas emissions have been increasing significantly. This project can be used to analyse how the countries have been polluting the air in last couple of years.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This project has 2 data visualisation tools : a line chart and a map. Line chart can be used to analyse the emission (in kilotons) vs year. And the map colors all the countries according to their emissions in a particular year.
+
+## Installation
+
+clone repo and install using -
+
+    npm install
+
+## Run on local
+
+    npm run start
+
+## Build project
+
+    npm run build
+
+## Documentation
+
+Developer documenation can be found in the [project wiki]().
