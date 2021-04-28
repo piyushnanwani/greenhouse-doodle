@@ -2,7 +2,10 @@
 
 > Visual analytics of greenhouse emissions.
 
-[[Screenshot GIFhere.png]]
+<p align="center" >
+<img src="https://github.com/piyushnanwani/greenhouse-doodle/blob/main/src/assets/output.gif" width="700px">
+
+</p>
 
 ## Why I made greenhouse doodle ?
 
