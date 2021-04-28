@@ -3,7 +3,7 @@
 > Visual analytics of greenhouse emissions.
 
 <p align="center" >
-<img src="https://github.com/piyushnanwani/greenhouse-doodle/blob/main/src/assets/output.gif" width="700px">
+<img src="https://github.com/piyushnanwani/greenhouse-doodle/blob/main/src/assets/screenshot.png" width="700px">
 
 </p>
 
