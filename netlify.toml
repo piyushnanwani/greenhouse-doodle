@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/chart*"
+  to = "/"
+  status = 200
+  force = false
