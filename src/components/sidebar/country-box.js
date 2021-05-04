@@ -1,10 +1,16 @@
 import React from 'react';
 import TrashIcon from '../../assets/svg/delete.svg';
-export default function CountryBox({ countryList, setCountryList }) {
+export default function CountryBox({ countryList, setCountryList, countryNames, setCountryNames }) {
   function handleRemove(event) {
-    const newList = countryList.filter(item => item !== event.target.id);
+    if (
+      event.target.id === null ||
+      event.target.id === '' ||
+      event.target.id === ' '
+    ) return;
+      const newList = countryList.filter(item => item !== event.target.id);
 
     setCountryList(newList);
+    setCountryNames([...countryNames, event.target.id])
   }
   return (
     <div className="countrybox">
