@@ -6,11 +6,7 @@ export default function Graph({
   parameter,
   CLEANED_DATA,
   timePeriod,
-  countryList,
-  savedDataList,
-  setSavedDataList,
-  // currentData,
-  setCurrentData,
+  countryList
 }) {
   // if country does not lie in country list , then render it
   let filteredDataArr = [];

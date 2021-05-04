@@ -1,6 +1,5 @@
 import React, { useState, Suspense } from 'react';
-import { SelectYear, ParameterSelect } from '../common';
-import { fetchMapData, fetchMapDataAverage } from '../../api/get-map-data';
+import {  fetchMapDataAverage } from '../../api/get-map-data';
 import { generateColorsArr } from '../../utils/get-coloring-data';
 import { MAP_COLORS } from '../../config';
 import { NavigationBox, Legend, WorldMap } from './index';
@@ -10,10 +9,6 @@ export default function Map({
   start,
   end,
   countryNames,
-  mapYear,
-  setMapYear,
-  mapParameter,
-  setMapParameter,
   countryList
 }) {
   const [minX, setMinX] = useState(0); // mouse drag, changes these OR Zoom in & Zoom out buttons
@@ -21,16 +16,9 @@ export default function Map({
   const [viewBoxWidth, setViewBoxWidth] = useState(1500);
   const [viewBoxHeight, setViewBoxHeight] = useState(800);
 
-  const data = fetchMapData(parameter, start);
-  const data2 = fetchMapDataAverage(parameter, start, end,countryList);
-  console.log(data,data2)
-  const colorsArr = generateColorsArr(data2);
-  // const colorsArr = generateColorsArr(data);
+  const data = fetchMapDataAverage(parameter, start, end,countryList);
+  const colorsArr = generateColorsArr(data);
 
-  console.log('inside map', parameter, start, end, countryList)
-  // console.log(mapYear);
-  // console.log(mapParameter);
-  // console.log(data);
   const [position, setPosition] = React.useState({
     x: 100,
     y: 100,
@@ -81,12 +69,10 @@ export default function Map({
             viewBoxHeight={viewBoxHeight}
             setViewBoxHeight={setViewBoxHeight}
           />
-          {/* add range i.e starting year to ending year */}
-          {/* A loading symbol may help if query takes time */}
           <Legend
             start={start}
             end={end}
-            mapParameter={mapParameter}
+            parameter={parameter}
             colors={MAP_COLORS}
           />
           <svg viewBox="1000 0 1000 1000" width="700" height="600">
@@ -99,8 +85,6 @@ export default function Map({
               fill={position.active ? '#A0A0A0' : '#C8C8C8'}
               width="2000"
               height="857"
-              gas_parameter={mapParameter}
-              year={mapYear}
               viewBox={`${minX} ${minY} ${viewBoxWidth} ${viewBoxHeight}`}
               colors={colorsArr}
             />

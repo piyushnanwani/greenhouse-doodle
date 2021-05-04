@@ -16,7 +16,7 @@ const Legend = props => {
     <>
       <div className="legend-container">
         <div className="legend-header">
-          <p>{props.mapParameter}</p>
+          <p>{props.parameter}</p>
           <p style={{ fontSize: 12 }}>( In Kilo Tons )</p>
           <p>
             {props.start}-{props.end} 

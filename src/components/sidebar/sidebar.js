@@ -5,11 +5,6 @@ import {updateBrowserUrl} from '../../utils/update-browser-url';
 
 export default function Sidebar({
   CLEANED_DATA,
-  COUNTRIES_DATA,
-  mapYear,
-  mapParameter,
-  setMapParameter,
-  setMapYear,
   countryNames,
   setCountryNames,
   start,
@@ -21,13 +16,9 @@ export default function Sidebar({
   countryList,
   setCountryList
 }) {
-  const [savedDataList, setSavedDataList] = useState([]);
-  const [currentdata, setCurrentData] = useState([]);
 
   
   const [country, setCountry] = useState('Add Location');
-
-  // const COUNTRIES_NAMES = COUNTRIES_DATA;
 
   let countryListStr = String(countryList);
   
@@ -35,9 +26,7 @@ export default function Sidebar({
     start,
     end,
     parameter,
-    countryListStr,
-    mapYear,
-    mapParameter
+    countryListStr
   );
 
   useEffect(() => {
@@ -45,8 +34,7 @@ export default function Sidebar({
     let startStr = localStorage.getItem('start'); 
     let endStr = localStorage.getItem('end'); 
     let parameterStr = localStorage.getItem('parameter');
-    let mapYearStr = localStorage.getItem('mapYear'); 
-    let mapParameterStr = localStorage.getItem('mapParameter'); 
+
 
     if (countryList && countryListStr && countryListStr !== '') {
       let countryListArr = countryListStr.split(',');
@@ -56,17 +44,13 @@ export default function Sidebar({
     if (startStr) setStart(startStr);
     if (endStr) setEnd(endStr);
     if (parameterStr) setParameter(parameterStr);
-    if (mapYearStr) setMapYear(mapYearStr);
-    if (mapParameterStr) setMapParameter(mapParameterStr);
   }, []);
   useEffect(() => {
     localStorage.setItem('countryList', countryList);
     localStorage.setItem('start', start); //time Period
     localStorage.setItem('end', end); // time period
     localStorage.setItem('parameter', parameter);
-    localStorage.setItem('mapYear', mapYear);
-    localStorage.setItem('mapParameter', mapParameter);
-  }, [countryList, start, end, parameter, mapYear, mapParameter]);
+  }, [countryList, start, end, parameter]);
 
   if (start > end) {
     alert('Starting year cannot be greater than Ending year!');
@@ -96,9 +80,6 @@ export default function Sidebar({
             timePeriod={{ start, end }}
             CLEANED_DATA={CLEANED_DATA}
             countryList={countryList}
-            setCurrentData={setCurrentData}
-            savedDataList={savedDataList}
-            setSavedDataList={setSavedDataList}
           />
         </ErrorBoundary>
       </div>
