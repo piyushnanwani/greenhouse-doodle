@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from 'react-dropdown';
 import CountryBox from './country-box';
 // processing done once to load the all the coutries
@@ -9,7 +9,7 @@ export default function CountrySelect({
   countryList,
   setCountryList,
   countryNames,
-  setCountryNames
+  setCountryNames,
 }) {
   // const [countryNames, setCountryNames] = useState(COUNTRIES_NAMES); // for drop down
   const options = [...countryNames];
@@ -17,8 +17,8 @@ export default function CountrySelect({
 
   const defaultOption = country;
   useEffect(() => {
-    setCountry(countryNames[0])
-  }, [countryNames])
+    setCountry(countryNames[0]);
+  }, [countryNames]);
   return (
     <div className="country-select-container">
       <div className="country-select">
@@ -37,21 +37,29 @@ export default function CountrySelect({
           unselectable="on"
           onselectstart="return false;"
           onmousedown="return false;"
-          className="addBtn" onClick=
-          {() => {
+          className="addBtn"
+          onClick={() => {
             // add to list if not present before
             if (
               countryList.indexOf(country) === -1 &&
               country !== 'Add Location'
             )
-              setCountryList([...countryList, country]);
+              if (country === undefined) {
+                // if list empty , alert
+                alert('All countries already selected!');
+                return;
+              }
+
+            setCountryList([...countryList, country]);
             setCountryNames(previousState =>
               previousState.filter(ele => ele !== country)
             ); // remove name from drop down
             // setCountry(countryNames[0]);
             /* first get value of previous state if necessary */
           }}
-          > +
+        >
+          {' '}
+          +
         </div>
       </div>
       <CountryBox
