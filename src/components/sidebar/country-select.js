@@ -8,8 +8,10 @@ export default function CountrySelect({
   COUNTRIES_NAMES,
   countryList,
   setCountryList,
+  countryNames,
+  setCountryNames
 }) {
-  const [countryNames, setCountryNames] = useState(COUNTRIES_NAMES); // for drop down
+  // const [countryNames, setCountryNames] = useState(COUNTRIES_NAMES); // for drop down
   const options = [...countryNames];
   // const options = [...COUNTRIES_NAMES];
 

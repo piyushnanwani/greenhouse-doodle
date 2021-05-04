@@ -18,7 +18,9 @@ const Legend = props => {
         <div className="legend-header">
           <p>{props.mapParameter}</p>
           <p style={{ fontSize: 12 }}>( In Kilo Tons )</p>
-          <p>{props.mapYear}</p>
+          <p>
+            {props.start}-{props.end} 
+          </p>
         </div>
         {props.colors.map(renderLegendKeys)}
       </div>

@@ -1,27 +1,36 @@
 import React, { useState, Suspense } from 'react';
 import { SelectYear, ParameterSelect } from '../common';
-import { fetchMapData } from '../../api/get-map-data';
+import { fetchMapData, fetchMapDataAverage } from '../../api/get-map-data';
 import { generateColorsArr } from '../../utils/get-coloring-data';
 import { MAP_COLORS } from '../../config';
 import { NavigationBox, Legend, WorldMap } from './index';
 
 export default function Map({
+  parameter,
+  start,
+  end,
+  countryNames,
   mapYear,
   setMapYear,
   mapParameter,
   setMapParameter,
+  countryList
 }) {
   const [minX, setMinX] = useState(0); // mouse drag, changes these OR Zoom in & Zoom out buttons
   const [minY, setMinY] = useState(0);
   const [viewBoxWidth, setViewBoxWidth] = useState(1500);
   const [viewBoxHeight, setViewBoxHeight] = useState(800);
 
-  const data = fetchMapData(mapParameter, mapYear);
-  const colorsArr = generateColorsArr(data);
+  const data = fetchMapData(parameter, start);
+  const data2 = fetchMapDataAverage(parameter, start, end,countryList);
+  console.log(data,data2)
+  const colorsArr = generateColorsArr(data2);
+  // const colorsArr = generateColorsArr(data);
 
-  console.log(mapYear);
-  console.log(mapParameter);
-  console.log(data);
+  console.log('inside map', parameter, start, end, countryList)
+  // console.log(mapYear);
+  // console.log(mapParameter);
+  // console.log(data);
   const [position, setPosition] = React.useState({
     x: 100,
     y: 100,
@@ -65,22 +74,18 @@ export default function Map({
 
   return (
     <div className="map-container">
-      <div className="mapParameterNYearDiv">
-        <ParameterSelect
-          parameter={mapParameter}
-          setParameter={setMapParameter}
-          isThisForMap={true}
-        />
-        <SelectYear year={mapYear} setYear={setMapYear} />
-      </div>
+
       <Suspense fallback={<h1>Loading map.. . </h1>}>
         <div className="nav-box-legend-map-div">
           <NavigationBox
             viewBoxHeight={viewBoxHeight}
             setViewBoxHeight={setViewBoxHeight}
           />
+          {/* add range i.e starting year to ending year */}
+          {/* A loading symbol may help if query takes time */}
           <Legend
-            mapYear={mapYear}
+            start={start}
+            end={end}
             mapParameter={mapParameter}
             colors={MAP_COLORS}
           />
