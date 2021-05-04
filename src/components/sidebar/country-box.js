@@ -18,6 +18,7 @@ export default function CountryBox({ countryList, setCountryList, countryNames, 
         <div className="boxtopbar">Locations added by you</div>
       )}
       {countryList.map(function (country) {
+        if (country === null || country === '') return;
         return (
           <div className="countryBoxList" >
             <div
