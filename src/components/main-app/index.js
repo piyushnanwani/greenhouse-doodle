@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../sidebar';
 import Map from '../map';
 import GREENHOUSE_DATA from '../../data/greenhouse_gas_inventory_data.json';
@@ -6,18 +6,12 @@ import COUNTRIES_DATA from '../../data/countries.json';
 
 export default function MainApp() {
   const COUNTRIES_DATA_ARR = COUNTRIES_DATA.map(value => value.name);
-
   const [countryNames, setCountryNames] = useState(COUNTRIES_DATA_ARR); // for drop down
-
   const [parameter, setParameter] = useState('CO2');
   const [start, setStart] = useState(1990);
   const [end, setEnd] = useState(2014);
   const [countryList, setCountryList] = useState([]);
   
-  useEffect(() => {
-  console.log('value update',start,parameter)
-
-  },[start,parameter])
   return (
     <div className="mainApp">
       <h1 className="mainAppH1">
