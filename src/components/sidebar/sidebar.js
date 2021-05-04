@@ -10,17 +10,24 @@ export default function Sidebar({
   mapParameter,
   setMapParameter,
   setMapYear,
+  countryNames,
+  setCountryNames,
+  start,
+  setStart,
+  end,
+  setEnd,
+  parameter,
+  setParameter,
+  countryList,
+  setCountryList
 }) {
   const [savedDataList, setSavedDataList] = useState([]);
   const [currentdata, setCurrentData] = useState([]);
 
-  const [countryList, setCountryList] = useState([]);
+  
   const [country, setCountry] = useState('Add Location');
 
-  const [parameter, setParameter] = useState('CO2');
-  const [start, setStart] = useState(1990);
-  const [end, setEnd] = useState(2014);
-  const COUNTRIES_NAMES = COUNTRIES_DATA;
+  // const COUNTRIES_NAMES = COUNTRIES_DATA;
 
   let countryListStr = String(countryList);
   
@@ -98,9 +105,11 @@ export default function Sidebar({
       <CountrySelect
         countryList={countryList}
         setCountryList={setCountryList}
-        COUNTRIES_NAMES={COUNTRIES_NAMES}
+        COUNTRIES_NAMES={countryNames}
         country={country}
         setCountry={setCountry}
+        countryNames={countryNames}
+        setCountryNames={setCountryNames}
       />
     </div>
   );
