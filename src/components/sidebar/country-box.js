@@ -1,16 +1,22 @@
 import React from 'react';
 import TrashIcon from '../../assets/svg/delete.svg';
-export default function CountryBox({ countryList, setCountryList, countryNames, setCountryNames }) {
+export default function CountryBox({
+  countryList,
+  setCountryList,
+  countryNames,
+  setCountryNames,
+}) {
   function handleRemove(event) {
     if (
       event.target.id === null ||
       event.target.id === '' ||
       event.target.id === ' '
-    ) return;
-      const newList = countryList.filter(item => item !== event.target.id);
+    )
+      return;
+    const newList = countryList.filter(item => item !== event.target.id);
 
     setCountryList(newList);
-    setCountryNames([...countryNames, event.target.id])
+    setCountryNames([...countryNames, event.target.id]);
   }
   return (
     <div className="countrybox">
@@ -18,9 +24,9 @@ export default function CountryBox({ countryList, setCountryList, countryNames, 
         <div className="boxtopbar">Locations added by you</div>
       )}
       {countryList.map(function (country) {
-        if (country === null || country === '') return;
+        if (country === null || country === '') return country;
         return (
-          <div className="countryBoxList" >
+          <div className="countryBoxList">
             <div
               style={{
                 display: 'flex',
@@ -35,18 +41,13 @@ export default function CountryBox({ countryList, setCountryList, countryNames, 
                   handleRemove(event);
                 }}
               >
-                <div className="tooltip">
-                  <img
-                    id={country}
-                    src={TrashIcon}
-                    className="trashIcon"
-                    alt="logo"
-                    height={20}
-                  />
-                  <span id="tooltip-delete" class="tooltiptext tooltip-delete">
-                    Delete
-                  </span>
-                </div>
+                <img
+                  id={country}
+                  src={TrashIcon}
+                  className="trashIcon"
+                  alt="logo"
+                  height={20}
+                />
               </div>
             </div>
             <hr />
